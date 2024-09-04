@@ -4,15 +4,15 @@ const db = require('./config/db');
 const app = express();
 
 app.use(express.json());
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.get('/todos', getAllTodos);
+app.get('/api/todo/get', getAllTodos);
 
-app.post('/todos', createTodo);
+app.post('/api/todo/create', createTodo);
 
-app.put('/todos/:id', updateTodo);
+app.put('/api/todo/update/:id', updateTodo);
 
-app.delete('/todos/:id', deleteTodo);
+app.delete('/api/todo/delete/:id', deleteTodo);
 
 db.connect(err => {
     if (err) throw err;
